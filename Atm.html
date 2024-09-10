@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Bank ATM</title>
+    <link rel="stylesheet" href="Atm.css">
+</head>
+<body>
+    <div id="atm-container">
+        <div id="atm">
+            <div id="welcome">
+                <h1>Welcome to ABC Bank ATM</h1>
+                <button onclick="showLogin()">Login</button>
+                <button onclick="showCreateAccount()">Create Account</button>
+            </div>
+            <div id="login" class="hidden">
+                <h2>Login</h2>
+                <input type="text" id="loginAccountNumber" placeholder="Account Number" required>
+                <input type="password" id="loginPin" placeholder="PIN" required>
+                <button onclick="login()">Login</button>
+                <p id="loginError" class="error-message"></p>
+                <button onclick="showWelcome()">Back to Welcome</button>
+            </div>
+            <div id="createAccount" class="hidden">
+                <h2>Create Account</h2>
+                <input type="text" id="newAccountNumber" placeholder="New Account Number" required>
+                <input type="password" id="newPin" placeholder="New PIN" required>
+                <input type="number" id="initialBalance" placeholder="Initial Balance" required>
+                <button onclick="createAccount()">Create Account</button>
+                <p id="createAccountError" class="error-message"></p>
+                <button onclick="showWelcome()">Back to Welcome</button>
+            </div>
+            <div id="mainMenu" class="hidden">
+                <h2>Main Menu</h2>
+                <button onclick="viewBalance()">View Balance</button>
+                <button onclick="showWithdraw()">Withdraw Cash</button>
+                <button onclick="showDeposit()">Deposit Funds</button>
+                <button onclick="showChangePin()">Change PIN</button>
+                <button onclick="exit()">Exit</button>
+            </div>
+            <div id="withdrawMenu" class="hidden">
+                <h2>Withdraw Cash</h2>
+                <button onclick="withdraw(1000)">N1000</button>
+                <button onclick="withdraw(2000)">N2000</button>
+                <button onclick="withdraw(5000)">N5000</button>
+                <button onclick="withdraw(10000)">N10000</button>
+                <button onclick="withdraw(20000)">N20000</button>
+                <button onclick="cancelTransaction()">Cancel</button>
+            </div>
+            <div id="depositMenu" class="hidden">
+                <h2>Deposit Funds</h2>
+                <input type="number" id="depositAmount" placeholder="Amount" required>
+                <button onclick="deposit()">Deposit</button>
+                <button onclick="cancelTransaction()">Cancel</button>
+            </div>
+            <div id="changePin" class="hidden">
+                <h2>Change PIN</h2>
+                <input type="password" id="currentPin" placeholder="Current PIN" required>
+                <input type="password" id="newPin" placeholder="New PIN (5 digits)" required>
+                <button onclick="changePin()">Change PIN</button>
+                <p id="changePinError" class="error-message"></p>
+                <button onclick="reset()">Cancel</button>
+            </div>
+            <div id="message" class="hidden">
+                <p id="messageText"></p>
+                <button onclick="reset()">OK</button>
+            </div>
+        </div>
+    </div>
+    <script src="Atm.js"></script>
+</body>
+</html>

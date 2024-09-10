@@ -42,7 +42,7 @@ function login() {
 
 function createAccount() {
     const accountNumber = document.getElementById('newAccountNumber').value;
-    const pin = document.getElementById('newPin').value;
+    const pin = document.getElementById('newPins').value;
     const initialBalance = parseFloat(document.getElementById('initialBalance').value);
     
     if (ACCOUNTS[accountNumber]) {
@@ -56,22 +56,30 @@ function createAccount() {
     }
 }
 
-function changePin() {
-    const currentPin = document.getElementById('currentPin').value;
-    const newPin = document.getElementById('newPin').value;
+  function changePin() {
+    const currentPin = document.getElementById('currentPin').value.trim();
+    const newPin = document.getElementById('newPin').value.trim();
+    
+    console.log(`Current PIN entered: ${currentPin}`);
+    console.log(`New PIN entered: ${newPin}`);
 
     if (ACCOUNTS[currentAccount].pin !== currentPin) {
         document.getElementById('changePinError').textContent = 'Current PIN is incorrect.';
         return;
     }
+
     if (newPin.length !== 5 || isNaN(newPin)) {
         document.getElementById('changePinError').textContent = 'New PIN must be 5 digits.';
+        console.log(`New PIN length: ${newPin.length}`);
+        console.log(`Is New PIN a number: ${isNaN(newPin)}`);
         return;
     }
+
     ACCOUNTS[currentAccount].pin = newPin;
     showMessage('PIN changed successfully.');
     reset();
-}
+  }
+
 
 function viewBalance() {
     showMessage(`Your current balance is: N${ACCOUNTS[currentAccount].balance}`);
